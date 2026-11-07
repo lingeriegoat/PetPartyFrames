@@ -1,0 +1,11 @@
+## Interface: 16001
+## Title: PartyPetFrames
+## Version: 1.2.0-forever
+## Notes: Shows the default party pet frames under party members.
+## Author: lingeriegoat (original by Melik Noyan Baykal)
+## SavedVariablesPerCharacter: PPF_IsEnabled
+
+src\Locale.lua
+src\Compat.lua
+src\PetPowerBar.lua
+src\PartyPetFrames.lua
