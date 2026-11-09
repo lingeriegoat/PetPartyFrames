@@ -22,6 +22,10 @@ local _, ns = ...
 
 local Plain, Raw = ns.Plain, ns.Raw
 
+local GAP_BELOW_HEALTH = 0.10
+local BAR_HEIGHT = 0.5
+local LEFT_INSET = 0.2
+
 local PetPowerBar = {}
 PetPowerBar.__index = PetPowerBar
 ns.PetPowerBar = PetPowerBar
@@ -58,17 +62,11 @@ function PetPowerBar:Build(petFrame)
 
   bar:ClearAllPoints()
   local anchor = self.health or petFrame
-  local h = (self.health and Plain(self.health.GetHeight, self.health)) or 8
-  if not h or h < 2 then h = 8 end
-  if self.health then
-    bar:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, 0)
-    bar:SetPoint("TOPRIGHT", anchor, "BOTTOMRIGHT", 0, 0)
-  else
-    bar:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, 0)
-    bar:SetPoint("TOPRIGHT", anchor, "BOTTOMRIGHT", 0, 0)
-  end
-  bar:SetHeight(h)
-  bar:SetFrameLevel((petFrame:GetFrameLevel() or 1) + 1)
+  local h = Plain(anchor.GetHeight, anchor) or 10
+  bar:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", h * LEFT_INSET, -h * GAP_BELOW_HEALTH)
+  bar:SetPoint("TOPRIGHT", anchor, "BOTTOMRIGHT", 0, -h * GAP_BELOW_HEALTH)
+  bar:SetHeight(math.max(2, h * BAR_HEIGHT))
+  bar:SetFrameLevel((petFrame:GetFrameLevel() or 1) + 2)
   return true
 end
 

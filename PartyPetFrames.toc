@@ -1,7 +1,7 @@
 ## Interface: 16001
 ## Title: PartyPetFrames
 ## Version: 1.2.0-forever
-## Notes: Shows the default party pet frames under party members.
+## Notes: Shows the default party pet frames under party members and adds a pet power bar. (/ppf)
 ## Author: lingeriegoat (original by Melik Noyan Baykal)
 ## SavedVariablesPerCharacter: PPF_IsEnabled
 

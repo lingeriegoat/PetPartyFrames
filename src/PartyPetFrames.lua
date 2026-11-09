@@ -108,9 +108,11 @@ local function Debug()
   for i = 1, MAX do
     local m, p = ns.GetMemberFrame(i), ns.GetPetFrame(i)
     local hb = p and ns.GetPetHealthBar(p, i)
-    Print(string.format("%d: member=%s pet=%s health=%s petUnit=%s shown=%s", i,
+    Print(string.format("%d: member=%s pet=%s health=%s petUnit=%s shown=%s petSize=%sx%s healthSize=%sx%s", i,
       tostring(m and (m.GetName and m:GetName() or "anon")), tostring(p and (p.GetName and p:GetName() or "anon")),
-      tostring(hb ~= nil), tostring(UnitExists("partypet" .. i)), tostring(p and p.IsShown and p:IsShown())))
+      tostring(hb ~= nil), tostring(UnitExists("partypet" .. i)), tostring(p and p.IsShown and p:IsShown()),
+      tostring(p and p.GetWidth and p:GetWidth()), tostring(p and p.GetHeight and p:GetHeight()),
+      tostring(hb and hb.GetWidth and hb:GetWidth()), tostring(hb and hb.GetHeight and hb:GetHeight())))
   end
 end
 
